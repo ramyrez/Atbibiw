@@ -15,6 +15,8 @@ import android.widget.Toast;
 
 import com.dto.quizcov.activities.QuizDashboardActivity;
 
+import cn.pedant.SweetAlert.SweetAlertDialog;
+
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -33,12 +35,78 @@ public class MainActivity extends AppCompatActivity {
 
         int res=getIntent().getIntExtra("res",0);
     //    Toast.makeText(this,res+"",Toast.LENGTH_LONG).show();
+        findViewById(R.id.cov).setVisibility(View.GONE);
+
         if(res<2)findViewById(R.id.cov).setVisibility(View.GONE);
         else  if(res==2){
+            // new SweetAlertDialog(this, SweetAlertDialog.WARNING_TYPE)
+            new SweetAlertDialog(this, SweetAlertDialog.CUSTOM_IMAGE_TYPE)
+                    .setTitleText("النتيجة")
+                    .setContentText("على حسب الأعراض التي ابديتها، ننصح بمهاتفة 3030 من أجل معلومات أكثر.")
+                    .setCustomImage(R.drawable.ic_action_call)
+                    .setConfirmText("الاتصال")
+                    .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                        @Override
+                        public void onClick(SweetAlertDialog sDialog) {
+                            call("3030");
+                            sDialog.dismissWithAnimation();
+                        }
+                    })
+                    .setCancelButton("تجاهل", new SweetAlertDialog.OnSweetClickListener() {
+                        @Override
+                        public void onClick(SweetAlertDialog sDialog) {
+                            sDialog.dismissWithAnimation();
+                        }
+                    })
+                    .show();
+
             findViewById(R.id.lang).setVisibility(View.GONE);
-            findViewById(R.id.call).setVisibility(View.GONE);}
+            findViewById(R.id.call).setVisibility(View.GONE);
+        }
         else  if(res==3 || res==4){
+            // new SweetAlertDialog(this, SweetAlertDialog.WARNING_TYPE)
+            new SweetAlertDialog(this, SweetAlertDialog.CUSTOM_IMAGE_TYPE)
+                    .setTitleText("النتيجة")
+                    .setContentText("إن الأعراض المسجلة، قد تكون أعراض الكوفيد.. يرجى التوجه إلى أقرب مركز صحي لفحص نوعية الزكام.")
+                    .setCustomImage(R.drawable.ic_action_go)
+                  .setConfirmText("تجاهل")
+                    .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                        @Override
+                        public void onClick(SweetAlertDialog sDialog) {
+                          //  call("3030");
+                            sDialog.dismissWithAnimation();
+                        }
+                    })
+                 /*   .setCancelButton("تجاهل", new SweetAlertDialog.OnSweetClickListener() {
+                        @Override
+                        public void onClick(SweetAlertDialog sDialog) {
+                            sDialog.dismissWithAnimation();
+                        }
+                    })*/
+                    .show();
             findViewById(R.id.call).setVisibility(View.GONE);}
+        else {
+            // new SweetAlertDialog(this, SweetAlertDialog.WARNING_TYPE)
+            new SweetAlertDialog(this, SweetAlertDialog.CUSTOM_IMAGE_TYPE)
+                    .setTitleText("النتيجة")
+                    .setContentText("حالتك متقدمة، يرجى مكالمة الحماية المدنية فورا، من أجل نقلك إلى المستشفى")
+                    .setCustomImage(R.drawable.ic_action_po)
+                    .setConfirmText("الاتصال")
+                    .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                        @Override
+                        public void onClick(SweetAlertDialog sDialog) {
+                            call("1548");
+                            sDialog.dismissWithAnimation();
+                        }
+                    })
+                    .setCancelButton("تجاهل", new SweetAlertDialog.OnSweetClickListener() {
+                        @Override
+                        public void onClick(SweetAlertDialog sDialog) {
+                            sDialog.dismissWithAnimation();
+                        }
+                    })
+                    .show();
+        }
 
         findViewById(R.id.add).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -55,7 +123,7 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.call).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                call("3030");
+                call("1548");
             }
         });
 
@@ -81,7 +149,7 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.developer).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                openurl("http://covid19.sante.gov.dz/");
+                openurl("http://covid19.sante.gov.dz/carte/");
             }
         });
         findViewById(R.id.policis).setOnClickListener(new View.OnClickListener() {
