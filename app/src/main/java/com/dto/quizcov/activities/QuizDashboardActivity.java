@@ -65,9 +65,9 @@ if(questionHolderArrayList.get(3).getOptionB().equals("true") || questionHolderA
             questionHolderArrayList.get(1).getOptionC().equals("true")||
             questionHolderArrayList.get(1).getOptionD().equals("true"))res++;
 
-    if(questionHolderArrayList.get(2).getOptionA().equals("true"))res++;
-    else if(questionHolderArrayList.get(2).getOptionB().equals("true"))res+=2;
-    else if(questionHolderArrayList.get(2).getOptionC().equals("true"))res+=3;
+    if(questionHolderArrayList.get(2).getOptionB().equals("true"))res++;
+    else if(questionHolderArrayList.get(2).getOptionC().equals("true"))res+=2;
+    else if(questionHolderArrayList.get(2).getOptionD().equals("true"))res+=3;
 
     if(questionHolderArrayList.get(3).getOptionA().equals("true"))res+=5;
 }else{
@@ -147,7 +147,8 @@ System.out.println(res);
             mBtnOptionA.setText(getResources().getString(R.string.q3_a));
             mBtnOptionB.setText(getResources().getString(R.string.q3_b));
             mBtnOptionC.setText(getResources().getString(R.string.q3_c));
-            findViewById(R.id.cd).setVisibility(View.GONE);
+            mBtnOptionD.setText(getResources().getString(R.string.q3_d));
+          //  findViewById(R.id.cd).setVisibility(View.GONE);
             findViewById(R.id.ce).setVisibility(View.GONE);
             findViewById(R.id.cf).setVisibility(View.GONE);
             // mBtnOptionF.setText(getResources().getString(R.string.q1_f));
