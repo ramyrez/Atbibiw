@@ -3,6 +3,7 @@
         <string name="app_name">Atbibiw</string>
         <string name="tit">Quiz question for COVID19</string>
 
+
         <string name="q1">ماهي الأعراض التي لديك يمكنك اختيار اكتر من اجابة</string>
         <string name="q1_a">حمى</string>
         <string name="q1_b">سعال جديد أو اصبح أسوء</string>
